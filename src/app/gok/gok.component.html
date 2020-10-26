@@ -1,6 +1,6 @@
 <label for="gok"><p>Raad een getal tussen 1 en 100.</p>
 <p><input type="text" [formControl]="gok">
- <button (click)="submitGok(gok.value)" [disabled]="test">Add</button></p>
+ <button (click)="submitGok(gok.value)">Add</button></p>
 </label>
     <p class="guesses">Guesses: <span *ngFor="let number of listGuesses">{{number}} </span></p>
 	<p class="lastResult">Result Last Guess: {{ lastResult }}</p>
