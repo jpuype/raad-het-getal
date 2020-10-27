@@ -30,7 +30,7 @@ export class GokComponent {
     } else {
       this.turnsLeft = 'Nog ' + this.nrGuesses + ' beurten resterend!';
       this.lowOrHi =  (this.submittedGok < this.secretNumber) ? 'Kies een hoger getal!' : 'Kies een lager getal!';
-      if (this.nrGuesses === 10) {
+      if (this.nrGuesses === 0) {
         this.buttonStatus = true;
         this.message = 'GAME OVER!!! het juiste getal was ' + this.secretNumber + ' !';
       }
