@@ -1,8 +1,10 @@
 <label for="gok"><p>Raad een getal tussen 1 en 100.</p>
-<p><input type="text" [formControl]="gok">
- <button (click)="submitGok(gok.value)">Add</button></p>
+	<p>
+		<input type="text" [(ngModel)]="gokReset" [formControl]="gok">
+		 <button (click)="submitGok(gok.value)" [disabled]="buttonStatus">Add</button>
+	</p>
 </label>
-    <p class="guesses">Guesses: <span *ngFor="let number of listGuesses">{{number}} </span></p>
-	<p class="lastResult">Result Last Guess: {{ lastResult }}</p>
-	<p class="lowOrHi">Last Guess: {{ lowOrHi }}</p>
-	<p class="secret">Secret: {{ secretNumber }}</p>
+<p class="guesses">Uw gok: {{submittedGok}}</p>
+<p class="lowOrHi">{{ lowOrHi }}</p>
+<p class="turnsLeft">{{ turnsLeft }}</p>
+<p class="message">{{ message }}</p>

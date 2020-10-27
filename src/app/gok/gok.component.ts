@@ -6,23 +6,34 @@ import { FormControl } from '@angular/forms';
   templateUrl: './gok.component.html',
   styleUrls: ['./gok.component.css']
 })
+
 export class GokComponent {
   gok = new FormControl('');
-  listGuesses: number[] = [];
+  gokReset = '';
+  nrGuesses = 10;
   submittedGok = 0;
-  lastResult = '';
+  turnsLeft = '';
   lowOrHi = '';
   secretNumber = Math.floor(Math.random() * 100) + 1;
+  buttonStatus = false;
+  message = '';
 
   submitGok(newGok): any  {
     this.submittedGok = parseInt(newGok, 10);
-    this.listGuesses.push(this.submittedGok);
+    this.nrGuesses--;
+    this.gokReset = ' ';
+
     if (this.submittedGok === this.secretNumber) {
-      this.lastResult = 'You\'ve got it!!';
-      this.lowOrHi = 'Exactly Right!';
+      this.turnsLeft = '';
+      this.lowOrHi = 'PROFICIAT! U heeft het goed geraden!';
+      this.buttonStatus = true;
     } else {
-      this.lastResult = 'Wrong!';
-      this.lowOrHi =  (this.submittedGok < this.secretNumber) ? 'Too Low!' : 'Too High!';
+      this.turnsLeft = 'Nog ' + this.nrGuesses + ' beurten resterend!';
+      this.lowOrHi =  (this.submittedGok < this.secretNumber) ? 'Kies een hoger getal!' : 'Kies een lager getal!';
+      if (this.nrGuesses === 10) {
+        this.buttonStatus = true;
+        this.message = 'GAME OVER!!! het juiste getal was ' + this.secretNumber + ' !';
+      }
     }
   }
 
