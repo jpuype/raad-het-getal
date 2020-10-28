@@ -301,6 +301,22 @@
 
 <div class="content" role="main">
 
+    <div class="container">
     <h1>Raad het getal!</h1>
-    <app-gok></app-gok>
+    <mat-divider></mat-divider>
+    <p>&nbsp;</p>
+      <label for="gok"><p>Raad een getal tussen 1 en 100.</p></label>
+      <p>&nbsp;</p>
+      <mat-form-field class = "tp-full-width">
+        <input matInput placeholder = "Uw nieuwe gok?" type="text" [(ngModel)]="gokReset" [formControl]="gok">
+        <button mat-raised-button matSuffix color="primary" (click)="submitGok(gok.value)" [disabled]="buttonStatus">Add</button>
+      </mat-form-field>
+    <p class="guesses">Uw gok: {{submittedGok}}</p>
+    <p class="lowOrHi">{{ lowOrHi }}</p>
+    <p>&nbsp;</p>
+    <mat-divider></mat-divider>
+    <p>&nbsp;</p>
+    <p class="turnsLeft">{{ turnsLeft }}</p>
+    <p class="message">{{ message }}</p>
+    </div>    
 </div>
